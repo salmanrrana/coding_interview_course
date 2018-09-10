@@ -1,1 +1,1 @@
-# coding_interview_course
+# AlgoCasts
