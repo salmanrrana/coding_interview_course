@@ -7,6 +7,25 @@
 //   palindrome("abba") === true
 //   palindrome("abcdefg") === false
 
-function palindrome(str) {}
+// Solution 2 - not ideal solution because it does more iterations
+// because it compares the first to the last
+// and then the last to the first again
+function palindrome(str) {
+  // turn string into array
+  return str.split('').every((char, i) => {
+    return char === str[str.length - i - 1];
+  });
+}
 
 module.exports = palindrome;
+
+// Solution 1 - most direct palindrome solution
+// function palindrome(str) {
+//   const reversed = str
+//     .split('')
+//     .reverse()
+//     .join('');
+//
+//     // This returns a boolean
+//   return str === reversed;
+// }
