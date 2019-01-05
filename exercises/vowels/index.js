@@ -14,8 +14,6 @@ function vowels(str) {
   // "g" will not stop at the first match
   // "i" stands for insensitive - or case insensitive
   const matches = str.match(/[aeiou]/gi);
-  // if matches is null
-
   return matches ? matches.length : 0;
 }
 
