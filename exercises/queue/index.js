@@ -8,6 +8,25 @@
 //     q.add(1);
 //     q.remove(); // returns 1;
 
-class Queue {}
+class Queue {
+  // step 1 - initialize an array and assign it to the instance in the queue
+  // the only place this can be done is in the constructor method
+  constructor() {
+    this.data = [];
+  }
+
+  // step 2 - Add our ADD method and call with peice of
+  // data that needs to be saved in our array
+  // unshift adds to the start of the array
+  add(record) {
+    this.data.unshift(record);
+  }
+
+  //step 3 - implement the remove method
+  // take value from end and return it
+  remove() {
+    return this.data.pop();
+  }
+}
 
 module.exports = Queue;

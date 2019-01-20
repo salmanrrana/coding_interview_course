@@ -22,8 +22,25 @@
 //    q.remove() // 2
 //    q.remove() // 'There'
 
-const Queue = require('./queue');
+const Queue = require("./queue");
 
-function weave(sourceOne, sourceTwo) {}
+function weave(sourceOne, sourceTwo) {
+  const q = new Queue();
+
+  // Iterate over the different elements with peek function
+  // This way if no elements are left we do not get undefined
+  // if both are "TRUE" do this function.
+  while (sourceOne.peek() || sourceTwo.peek()) {
+    // check peek function again and make sure there are still elemnts inside of it
+    if (sourceOne.peek()) {
+      q.add(sourceOne.remove());
+    }
+
+    if (sourceTwo.peek()) {
+      q.add(sourceTwo.remove());
+    }
+  }
+  return q;
+}
 
 module.exports = weave;
