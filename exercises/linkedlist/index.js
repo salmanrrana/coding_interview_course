@@ -20,6 +20,23 @@ class LinkedList {
     // const node = new Node(data, this.head);
     // this.head = node;
   }
+
+  size() {
+    //create a counter set to 0
+    let counter = 0;
+    // get reference to the head of the linked list
+    let node = this.head;
+
+    // while there is a node/when node is a truthy value
+    while (node) {
+      // add 1 to the counter
+      counter++;
+      // go to the next node and see if next is null or has a value
+      node = node.next;
+    }
+
+    return counter;
+  }
 }
 
 module.exports = { Node, LinkedList };
