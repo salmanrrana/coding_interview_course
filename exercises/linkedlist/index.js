@@ -22,20 +22,45 @@ class LinkedList {
   }
 
   size() {
-    //create a counter set to 0
     let counter = 0;
-    // get reference to the head of the linked list
     let node = this.head;
 
-    // while there is a node/when node is a truthy value
     while (node) {
-      // add 1 to the counter
       counter++;
-      // go to the next node and see if next is null or has a value
       node = node.next;
     }
 
     return counter;
+  }
+
+  getFirst() {
+    return this.head;
+  }
+
+  getLast() {
+    if (!this.head) {
+      return null;
+    }
+
+    let node = this.head;
+    while (node) {
+      if (!node.next) {
+        return node;
+      }
+      node = node.next;
+    }
+  }
+
+  clear() {
+    this.head = null;
+  }
+
+  removeFirst() {
+    if (!this.head) {
+      return;
+    }
+
+    this.head = this.head.next;
   }
 }
 
