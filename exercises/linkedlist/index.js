@@ -82,21 +82,34 @@ class LinkedList {
     previous.next = null;
   }
 
-  // called with a data argument that we will insert in a new node
   insertLast(data) {
-    //get a reference to the last node in our current linked List
     const last = this.getLast();
 
     if (last) {
-      // there are sme existing nodes in our chain
       last.next = new Node(data);
     } else {
-      // the chain is empty
-      // this.head = new Node(data);
-      //we can reuse our code like below, as mentioned previously by the instructor,
-      // or we can do the code above
-      insertFirst(data);
+      this.head = new Node(data);
     }
+  }
+
+  getAt(index) {
+    let counter = 0;
+    //this looks at first node in chain
+    let node = this.head;
+    // as long as node is defined
+    while (node) {
+      // check to see if counter is = to index that we are trying to retreive
+      if (counter === index) {
+        return node;
+      }
+      // if they dont equal each other we will do this loop
+      // first we will add 1 to the counter
+      counter++;
+      //then we will advance to the next loop
+      node = node.next;
+    }
+    // if we return a number larger than the linked list
+    return null;
   }
 }
 
