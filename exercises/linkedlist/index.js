@@ -62,6 +62,35 @@ class LinkedList {
 
     this.head = this.head.next;
   }
+
+  removeLast() {
+    // if there is no nodes in the linked list
+    if (!this.head) {
+      return;
+    }
+    // if there is not a second node and just one node
+    if (!this.head.next) {
+      this.head = null;
+      return;
+    }
+
+    //initialize "previous" to be the firstnode
+    let previous = this.head;
+    //initialize "node" to be the item after the first node
+    let node = this.head.next;
+
+    // while there is a node after the node/it is defined
+    while (node.next) {
+      // "previous" will now become the next item ahead of the current state of "previous"
+      previous = node;
+      // "node" will now become the next node after the current state of "node"
+      node = node.next;
+    }
+    // now that we are out of the while loop
+    // because there is no node after the current state of node
+    // we will set the current state of "previous" to be null
+    previous.next = null;
+  }
 }
 
 module.exports = { Node, LinkedList };
