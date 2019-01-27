@@ -111,6 +111,34 @@ class LinkedList {
     // if we return a number larger than the linked list
     return null;
   }
+
+  removeAt(index) {
+    //first check to see if the list is empty
+    if (!this.head) {
+      return;
+    }
+
+    // trying to remove the head element (the very first element at index of 0)
+    if (index === 0) {
+      // point at the second element in the chain. this removes the first element
+      // if only one value in list, then the next element is null, thus removing first element
+      this.head = this.head.next;
+      // if we are done, then return
+      return;
+    }
+    // reuse the getAt method to find "previous" node right
+    // before the one we are attempting to remove
+    const previous = this.getAt(index - 1);
+    // if the previous does not exist(the index is larger than the list)
+    // or of the previous.next does not exist(at end of list)
+    if (!previous || !previous.next) {
+      // then just return
+      return;
+    }
+    // point to the next item on the list for previous
+    // rather than the one it is currently looking at
+    previous.next = previous.next.next;
+  }
 }
 
 module.exports = { Node, LinkedList };
