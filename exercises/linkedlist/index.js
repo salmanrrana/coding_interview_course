@@ -15,11 +15,16 @@ class LinkedList {
   }
 
   insertFirst(data) {
-    this.head = new Node(data, this.head);
-    //This is one option to solve this part of the problem or we can do the above
-    // const node = new Node(data, this.head);
-    // this.head = node;
+    this.insertAt(data, 0);
   }
+
+  // this can be redundant so we can write the inserFirst like the above code
+  // insertFirst(data) {
+  //   this.head = new Node(data, this.head);
+  //   //This is one option to solve this part of the problem or we can do the above
+  //   // const node = new Node(data, this.head);
+  //   // this.head = node;
+  // }
 
   size() {
     let counter = 0;
@@ -34,22 +39,32 @@ class LinkedList {
   }
 
   getFirst() {
-    return this.head;
+    return this.getAt(0);
   }
+
+  // this also can be redundant and can be written as above
+  // getFirst() {
+  //   return this.head;
+  // }
 
   getLast() {
-    if (!this.head) {
-      return null;
-    }
-
-    let node = this.head;
-    while (node) {
-      if (!node.next) {
-        return node;
-      }
-      node = node.next;
-    }
+    return this.getAt(this.size() - 1);
   }
+
+  // This is also redundant and can be shorten to the above
+  // getLast() {
+  //   if (!this.head) {
+  //     return null;
+  //   }
+  //
+  //   let node = this.head;
+  //   while (node) {
+  //     if (!node.next) {
+  //       return node;
+  //     }
+  //     node = node.next;
+  //   }
+  // }
 
   clear() {
     this.head = null;
@@ -122,32 +137,18 @@ class LinkedList {
   }
 
   insertAt(data, index) {
-    // if the list is empty
     if (!this.head) {
-      // set the head to be a new node with the "data" that was passed in
       this.head = new Node(data);
-      // and return
       return;
     }
 
-    // if we try to insert at index 0, there is nothing there
-    // handle the case when element is at index 0
     if (index === 0) {
-      // this creates a new node and sets it as the head
-      // while also taking the first item in the list(0)
-      // and setting it as the next item in the list
       this.head = new Node(data, this.head);
       return;
     }
 
-    // when we want to inset somewhere in the middle of a List
-    // reuse the getAt method to find the data previous to the place
-    // we want to add the new data
     const previous = this.getAt(index - 1) || this.getLast();
-    //this creates the new node and makes it point at the same data that previous is currently
-    //also pointing to in terms of "next"
     const node = new Node(data, previous.next);
-    // Now we are setting the const previous data to have a next of the new node we just created.
     previous.next = node;
   }
 }
